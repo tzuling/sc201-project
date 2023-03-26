@@ -31,7 +31,8 @@ def main():
     maybe_email_list = read_in_data()
     y = [0] * 13 + [1] * 13
     predict_y = []
-    for maybe_email in maybe_email_list:
+    rightNum= 0
+    for enum, maybe_email in enumerate(maybe_email_list):
         feature_vector = feature_extractor(maybe_email)
         score = 0
         for i in range(len(WEIGHT)):
@@ -43,9 +44,7 @@ def main():
             predict_y.append(0)
         # print(f"score: {score}")
 
-    rightNum= 0
-    for i in range(len(y)):
-        if predict_y[i] == y[i]:
+        if predict_y[enum] == y[enum]:
             rightNum+= 1
 
     #Accuracy of this model
